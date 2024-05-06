@@ -29,7 +29,7 @@ public:
 		int sum = 0;
 		auto min = INT_MAX;
 		auto n = vec.size();
-
+		auto windowlen = right - left + 1;
 		while (right < n)
 		{
 			// add the current element right pointer is pointing to
@@ -37,7 +37,8 @@ public:
 			// test condition
 			while (sum >= target)
 			{
-				min = std::min(min, right - left + 1);
+				windowlen = right - left + 1; // calculate length of array
+				min = std::min(min, windowlen); // choose minimum window length
 				sum -= vec[left];
 				left++;
 			}
