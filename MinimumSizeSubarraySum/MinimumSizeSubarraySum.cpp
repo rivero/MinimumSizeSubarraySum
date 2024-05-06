@@ -35,7 +35,7 @@ public:
 			// add the current element right pointer is pointing to
 			sum += vec[right];
 			// test condition
-			while (target <= sum)
+			while (sum >= target)
 			{
 				min = std::min(min, right - left + 1);
 				sum -= vec[left];
@@ -43,7 +43,7 @@ public:
 			}
 			right++;
 		}
-		return min > INT_MAX ? 0 : min;
+		return min == INT_MAX ? 0 : min;
 	}
 };
 int main()
@@ -52,6 +52,11 @@ int main()
 	{
 		vector<int> vec{ 2, 3, 4, 1, 4, 3 };
 		int target = 7;
+		cout << sol.minSubArrayLen(target, vec) << endl;
+	}
+	{
+		vector<int> vec{ 1,1,1,1,1,1,1 };
+		int target = 11;
 		cout << sol.minSubArrayLen(target, vec) << endl;
 	}
 }
